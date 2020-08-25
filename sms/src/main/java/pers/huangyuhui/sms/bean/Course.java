@@ -16,6 +16,7 @@ public class Course {
 //    private Teacher teacher;
 //    //一个课程有多名学生
 //    private Student student;
+    //
 
     public String getTeacher_name() {
         return teacher_name;
