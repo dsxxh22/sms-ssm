@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.huangyuhui.sms.dao.CourseMapper">
+    <!-- 根据教师与班级名查询指定/全部教师信息列表 -->
+    <select id="selectList" parameterType="course" resultType="pers.huangyuhui.sms.bean.Course">
+        SELECT id, name, teacher_name
+        FROM tb_course
+        <where>
+            <if test="name!=null and name!=''">
+                AND name LIKE concat(concat('%',#{name}),'%')
+            </if>
+        </where>
+    </select>
+
+
+    <!-- 根据id修改指定课程信息 -->
+    <update id="update" parameterType="course">
+        UPDATE tb_course
+        <set>
+            <if test="name!=null and name!=''">name=#{name},</if>
+
+            <if test="teacher_name!=null and teacher_name!=''">teacher_name=#{teacher_name},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+
+    <!-- 根据课程名查询指定课程信息 -->
+    <select id="findByCname" resultType="course" parameterType="pers.huangyuhui.sms.bean.Course">
+        SELECT id,
+               name,
+               teacher_name
+        FROM tb_course
+        WHERE name = #{name}
+    </select>
+
+    <!-- 添加课程信息 -->
+    <insert id="insert" parameterType="course">
+        INSERT INTO tb_course(name,teacher_name)
+        VALUES (#{name},#{teacher_name})
+    </insert>
+
+    <!-- 根据id批量删除指定课程信息 -->
+    <delete id="deleteById">
+        DELETE FROM tb_course WHERE id IN
+        <foreach collection="array" item="ids" open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+    </delete>
+
+
+    <!-- 根据id选课 -->
+    <insert id="makeadd">
+        INSERT INTO tb_sc(student_name,course_name)
+        VALUES (#{student_name},#{course_name})
+
+    </insert>
+
+    <!-- 根据课程名查询选课记录 -->
+    <select id="findByScname" resultType="sc" parameterType="pers.huangyuhui.sms.bean.Sc">
+        SELECT id,
+               student_name,
+               course_name
+        FROM tb_sc
+        WHERE course_name = #{course_name} and student_name = #{student_name}
+    </select>
+
+
+    <!-- 查询指定/全部选课信息列表 -->
+    <select id="selectScList" parameterType="sc" resultType="pers.huangyuhui.sms.bean.Sc">
+        SELECT id,
+               student_name,
+               course_name
+        FROM tb_sc
+        <where>
+            <if test="course_name!=null and course_name!=''">
+                AND name LIKE concat(concat('%',#{course_name}),'%')
+            </if>
+        </where>
+    </select>
+
+    <!-- 根据id修改指定信息 -->
+    <update id="updatesc" parameterType="sc">
+        UPDATE tb_sc
+        <set>
+            <if test="student_name!=null and student_name!=''">student_name=#{student_name},</if>
+
+            <if test="course_name!=null and course_name!=''">course_name=#{course_name},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 添加信息 -->
+    <insert id="insertsc" parameterType="sc">
+        INSERT INTO tb_sc(student_name,course_name)
+        VALUES (#{student_name},#{course_name})
+    </insert>
+
+    <!-- 根据id批量删除指定信息 -->
+    <delete id="deleteByScId">
+        DELETE FROM tb_sc WHERE id IN
+        <foreach collection="array" item="ids" open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+    </delete>
+
+</mapper>

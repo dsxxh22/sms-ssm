@@ -104,6 +104,23 @@
                 },
                 </c:if>
                 {
+                    "menuid": "7", "icon": "", "menuname": "课程管理",
+                    "menus": [
+                        {
+                            "menuid": "27",
+                            "menuname": "课程列表",
+                            "icon": "icon-admin",
+                            "url": "../course/goCourseListView"
+                        },
+                        {
+                            "menuid": "28",
+                            "menuname": "选课情况列表",
+                            "icon": "icon-admin",
+                            "url": "../course/goScListView"
+                        }
+                    ]
+                },
+                {
                     "menuid": "6", "icon": "", "menuname": "个人信息管理",
                     "menus": [
                         {

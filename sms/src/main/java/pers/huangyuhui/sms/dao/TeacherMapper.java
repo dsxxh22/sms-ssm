@@ -36,4 +36,5 @@ public interface TeacherMapper {
     // TODO: 6/18/2019 根据id删除指定教师信息  
     int deleteById(Integer[] ids);
 
+    List<Teacher> selectAll();
 }

@@ -37,4 +37,5 @@ public interface TeacherService {
     // TODO: 6/18/2019 根据id修改指定教师密码
     int updatePassowrd(Teacher teacher);
 
+    List<Teacher> selectAll();
 }

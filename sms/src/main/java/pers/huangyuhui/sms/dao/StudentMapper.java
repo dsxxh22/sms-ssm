@@ -36,4 +36,6 @@ public interface StudentMapper {
     // TODO: 6/17/2019 根据id删除指定学生信息
     int deleteById(Integer[] ids);
 
+    List<Student> selectAll();
+
 }

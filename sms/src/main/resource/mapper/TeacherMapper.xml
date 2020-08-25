@@ -87,4 +87,19 @@
         </foreach>
     </delete>
 
+    <!-- 查询所有学生列表信息(用于在选课情况管理页面中获取学生信息) -->
+    <select id="selectAll" resultType="pers.huangyuhui.sms.bean.Teacher">
+        SELECT id,
+               tno,
+               name,
+               gender,
+               password,
+               email,
+               telephone,
+               address,
+               portrait_path,
+               clazz_name
+        FROM tb_teacher
+    </select>
+
 </mapper>

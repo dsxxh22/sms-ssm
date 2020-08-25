@@ -37,5 +37,7 @@ public interface StudentService {
     // TODO: 6/17/2019 根据id删除指定学生信息
     int deleteById(Integer[] ids);
 
+    //查询所有学生信息列表
+    List<Student> selectAll();
 }
 

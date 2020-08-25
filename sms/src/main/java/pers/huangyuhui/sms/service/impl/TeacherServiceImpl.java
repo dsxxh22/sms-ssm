@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pers.huangyuhui.sms.bean.LoginForm;
+import pers.huangyuhui.sms.bean.Student;
 import pers.huangyuhui.sms.bean.Teacher;
 import pers.huangyuhui.sms.dao.TeacherMapper;
 import pers.huangyuhui.sms.service.TeacherService;
@@ -59,5 +60,10 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public int deleteById(Integer[] ids) {
         return teacherMapper.deleteById(ids);
+    }
+
+    @Override
+    public List<Teacher> selectAll(){
+        return teacherMapper.selectAll();
     }
 }
